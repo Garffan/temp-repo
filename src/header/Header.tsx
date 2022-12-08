@@ -1,18 +1,17 @@
-import './header.css'
+import "./header.css";
 
-function Header() {
+export function Header() {
   return (
     <div className="header">
-    <div className="header__container">
-      <div className="header__logo">
-        Frontend-Production
-      </div>
-      <div className="header__search">
-      <input className='header__search-inpt' placeholder='Search or type a command'/>
+      <div className="header__container">
+        <div className="header__logo">Frontend-Production</div>
+        <div className="header__search">
+          <input
+            className="header__search-input"
+            placeholder="Search or type a command"
+          />
+        </div>
       </div>
     </div>
-   </div>
-  )
+  );
 }
-
-export default Header
