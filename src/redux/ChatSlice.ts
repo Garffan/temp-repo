@@ -1,6 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
 
+type DataOnly<T> = {
+  [key in keyof T as T[key] extends () => any ? never : key]: T[key];
+};
+
 export class Message {
   constructor(public id: number, public sender: string, public text: string) {}
 
@@ -17,7 +21,7 @@ export class MessagesCache {
   private static parse(raw: string): Message[] {
     let result: Message[] = [];
     try {
-      const data: any[] = JSON.parse(raw);
+      const data: DataOnly<Message>[] = JSON.parse(raw);
       result = data.map((it) => new Message(it.id, it.sender, it.text));
     } catch (e) {
       result = [];

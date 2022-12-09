@@ -21,13 +21,9 @@ export const ChatWithUser: React.FC<ChatWithUserProps> = ({ messagesList }) => {
   const ref = useChatScroll(messagesList);
   return (
     <div className="chat-with-user" id="scroll" ref={ref}>
-      {messagesList ? (
-        Object.values(messagesList).map((item: Message, index: number) => {
-          return <ChatMessage key={index} message={item} />;
-        })
-      ) : (
-        <></>
-      )}
+      {(messagesList || []).map((item: Message, index: number) => {
+        return <ChatMessage key={index} message={item} />;
+      })}
     </div>
   );
 };
